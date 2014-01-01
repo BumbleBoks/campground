@@ -1,0 +1,6 @@
+<% if current_user?(trade.trader) %>
+	<%= render "traders_choices", { trade: trade, completion_choice: "Close"} %>
+<% else %>
+	<%= link_to "Interested", "#", id: "interest_link" %>
+	<%= link_to "Maybe", "#", id: "wishlist_link" %>
+<% end %>

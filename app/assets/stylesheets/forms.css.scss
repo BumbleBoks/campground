@@ -1,0 +1,107 @@
+/* variables */
+$error-color: rgb(211, 147, 88);
+/*$error-color: rgb(248, 145, 149); */
+
+/* mixins */
+@mixin input_styling {
+	border-radius: 5px;
+	width: 200px;
+	height: 20px;
+	font-size: 12px;
+}
+
+.project_form {
+	form {
+		#radio_button_label {
+			width: 150px;
+			text-align: right;
+			padding-top: 5px;
+			margin-top: 5px;
+			margin-right: 5px;
+			float: none;
+		}
+		
+		label {
+			width: 150px;
+			float: left;
+			text-align: right;
+			padding-top: 5px;
+			margin-top: 5px;
+			margin-right: 5px;
+/*			display: block;
+*/		}
+				
+		select {
+			margin-top: 10px;
+		}
+		
+		textarea.wide_textarea {
+			width: 60%; 
+		}
+		
+		input {
+			@include input_styling;
+			margin-top: 5px;
+
+			&[type="submit"] {
+				margin-top: 10px;
+				margin-left: 150px;
+				font-size: 15px;
+				width: 150px;
+				height: 30px;
+				background-color: lighten(darkgreen, 60%);
+			}
+			
+			&[type="checkbox"] {
+				float: left;
+				width: 20px;
+				height: 20px;
+				margin-top: 15px;
+			}
+		}
+	}
+	
+}
+
+#nested_form {
+	text-align: left;
+	width: 140px;
+	margin-top: 10px;
+	padding-top: 3px;
+	height: 50px;
+}
+
+.field_with_errors {	
+	input {
+		border: 2px solid $error-color;
+	}	
+}
+
+#error_explanation {
+	width: 450px;
+	border: 2px solid darken($error-color, 20%);
+	padding: 7px;
+	padding-bottom: 0;
+	margin-bottom: 20px;
+	background-color: #f0f0f0;
+	h2 {
+		text-align: left;
+		font-weight: bold;
+		padding: 5px 5px 5px 15px;
+		font-size: 12px;
+		margin: -7px;
+		margin-bottom: 0px;
+		background-color: $error-color;
+		color: #fff; 
+	}
+	ul li {
+		font-size: 14px;
+		list-style: square; 
+	} 
+}	
+
+
+
+
+
+

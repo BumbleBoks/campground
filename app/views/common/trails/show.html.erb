@@ -1,0 +1,35 @@
+<% provide(:title, "OnTrailAgain - #{@trail.name}") %>
+
+<h2><%= @trail.name %></h2>
+<h4>in <%= @trail.state.name %></h4>
+<% if @trail.activities.any? %>
+	<h5>for 
+		<%= @trail.activities.map {|t| t.name}.to_sentence(last_word_connector: " and ") %>
+	</h5>
+<% end %>
+
+<% if logged_in? %>
+	<div id="other_links_button">
+		<%= render 'corner/favorites/add_remove_favorite', { trail: @trail } %>
+	</div>
+<% end %>	
+
+<div id="trail_map">
+	<%= link_to "", "http://maps.google.com/?q=#{@trail.name},#{@trail.state.name}", target: "_blank" %>	
+</div>
+
+<p> This trail is <%= @trail.length.to_f %> miles long. <br>
+	<%= text_with_newlines(@trail.description) %></p>
+<% if logged_in? %>
+	<div class='project_form'>
+		<%= render 'common/trails/update_form' %>		
+	</div>
+<% end %>
+
+<div id="trail_updates">
+	<% if @trail.updates.any? %>
+		<p><b>Updates</b></p>
+		<div class="pagination"><%= will_paginate @trail_updates %></div>
+		<%= render_update_partial(@trail_updates, false) %>
+	<% end %>
+</div>

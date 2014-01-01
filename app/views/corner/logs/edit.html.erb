@@ -1,0 +1,11 @@
+<% provide(:title, "OnTrailAgain - #{current_user.name}'s Diary") %>
+<h2>Enter Log</h2>
+
+<div class='project_form'>
+	<%= form_for @log, url: { action: :update } do |f| -%>
+
+		<%= render 'fields', { f: f, log_dates: @log_dates } %>	
+	  
+	<% end -%>
+	
+</div>

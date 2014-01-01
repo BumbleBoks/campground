@@ -1,0 +1,53 @@
+// Place all the styles related to the Community::Updates controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "body_styling";
+
+@mixin content_styling {
+	font-family: helvetica;
+	font-size: 13px;
+	margin-bottom: 5px;
+	margin-top: 10px;
+	padding-top: 10px;
+	display: block;
+}
+
+.update_trail {
+	color: lighten(darkgreen, 10%);
+	font-size: 15px;
+	padding: 10px 0 0 0px;
+	margin-top: 5px;
+	margin-bottom: -10px;
+	display: block;
+}
+
+.update_time {
+	color: gray;
+	font-size: 12px;
+	font-style: italic;
+	margin-left: 25px;
+	border-bottom: 1px solid gray;
+	width: 80%;
+	padding-bottom: 5px;
+	display: inline;	
+}
+
+.update_author {
+	position: relative;
+	left: 200px;	
+	color: darkgoldenrod;
+	font-size: 12px;
+	font-style: italic;	
+	display: inline;
+}
+
+.update_content {
+	color: cornflowerblue;
+	@include content_styling;
+}
+
+.update_content_star {
+	color: blueviolet;
+	@include content_styling;
+}

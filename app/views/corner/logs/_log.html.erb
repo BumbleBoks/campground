@@ -1,0 +1,22 @@
+<em>
+<%= @date.to_formatted_s(:calendar_date) %>
+</em>
+
+<%= link_to "Edit", edit_corner_log_path(@date.year, @date.month, @date.day), 
+	class: "edit_link" %>
+<%= link_to "Delete", corner_log_path(log), method: :delete, 
+ 	class: "delete_link", id: "delete_record" %>
+<p>
+  <b><%= log.title %></b>
+</p>
+
+<p>
+  <%= text_with_newlines(log.content) %>
+</p>
+
+<p>
+	<em>Tags: <%= generate_tags_string(log) %></em>
+</p>	
+	
+
+

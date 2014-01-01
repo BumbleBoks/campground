@@ -1,0 +1,36 @@
+<% provide(:title, "OnTrailAgain - #{current_user.name}'s Favorites") %>
+<h2>My Favorites</h2>
+
+<div id = "other_links_button">
+	<%= link_to "Change favorites", favorites_new_path %>
+</div>	
+
+<div id="favorite_activities">
+	<h4>Activities</h4>
+	<%= current_user.activities.map {|a| a.name}.join(", ") %>
+</div>
+
+<div id="favorite_trails">
+	<h4>Trails</h4>
+	<ul>
+	<% current_user.trails.each do |trail| %>
+		<li>
+			<%= link_to "#{trail.name}, #{trail.state.name}", common_trail_path(trail_link(trail)) %>
+		</li>
+	<% end %>
+	</ul>	
+</div>	
+
+<div id="favorite_users">
+	<h4>Stars</h4>
+	<% current_user.stars.each do |star| %>
+		<%= link_to star.login_id, user_path(star.login_id) %>
+	<% end %>
+</div>
+
+<div id="favorite_users">
+	<h4>Fans</h4>
+	<% current_user.fans.each do |fan| %>
+		<%= link_to fan.login_id, user_path(fan.login_id) %>
+	<% end %>
+</div>

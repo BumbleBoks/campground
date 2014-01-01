@@ -1,0 +1,81 @@
+# == Schema Information
+#
+# Table name: common_activities
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)      not null
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+require 'spec_helper'
+
+describe Common::Activity do
+  before { @activity = Common::Activity.new(name: "Footivity") }
+  subject { @activity }
+  
+  it { should respond_to(:name) }
+  it { should respond_to(:activity_associations) }
+  it { should respond_to(:trails) }
+  it { should respond_to(:favorite_activities) }
+  it { should respond_to(:users) }
+  it { should be_valid }
+  
+  it { should be_invalid_with_attribute_value(:name, '') }
+  
+  describe "with a duplicate name" do
+    before do
+      activity_with_dup_name = @activity.dup
+      activity_with_dup_name.save
+    end
+    
+    it { should_not be_valid }
+  end
+  
+  describe "with invalid name format" do
+    names = %w[a<43 h.890]    
+    names.each do |name|
+      it { should be_invalid_with_attribute_value(:name, name) }
+    end
+  end
+  
+  describe "with valid name format" do
+    before { @activity.name = "1abc def" }
+    it { should be_valid }
+  end
+  
+  describe "activity associations" do
+    let!(:trail) { create_trail }
+    before do
+      @activity.save
+      trail.activity_associations.create!(activity_id: @activity.id) 
+    end
+    
+    it "should destroy activity_associations for the activity" do
+      association_ids = @activity.activity_associations.map { |assoc| assoc.id }
+      @activity.destroy
+      association_ids.each do |id|
+        Common::ActivityAssociation.find_by(id: id).should be_nil
+      end
+    end
+  end
+  
+  describe "favorite activities" do
+    let (:user) { FactoryGirl.create(:user) }
+    
+    before do
+      @activity.save
+      user.favorite_activities.create!(activity_id: @activity.id)
+    end
+    
+    it "should destroy favorite_activities for the activity" do
+      favorite_ids = @activity.favorite_activities.map { |favs| favs.id}
+      @activity.destroy
+      favorite_ids.each do |id|
+        Corner::FavoriteActivity.find_by(id: id).should be_nil
+      end
+    end
+    
+  end
+  
+end

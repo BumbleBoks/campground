@@ -1,0 +1,3 @@
+<% if current_user?(trade.trader) %>
+	<%= render "traders_choices", { trade: trade, completion_choice: "Reopen"} %>
+<% end %>

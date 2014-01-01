@@ -1,0 +1,7 @@
+<% if (@trade.completed) %>
+	$("#completed_text").html("Trade completed!");
+	$("#trade_options").html("<%= escape_javascript(render 'completed_true', { trade: @trade }) %>");
+<% else %>
+	$("#completed_text").html("");
+    $("#trade_options").html("<%= escape_javascript(render 'completed_false', { trade: @trade }) %>");	
+<% end %>

@@ -1,0 +1,13 @@
+<% provide(:title, "OnTrailAgain - Missing Trails") %>
+<h2>Listing missing trails</h2>
+
+<table>
+	<% @missing_trails.each do |missing_trail| -%>
+		<tr>
+			<td><%= link_to shorten_string(missing_trail.info), 
+				edit_common_missing_trail_path(missing_trail) -%></td>
+			<td><%= missing_trail.user_email %></td>
+			<td><%= link_to "Delete", missing_trail, method: :delete, data: { confirm: 'Are you sure?' } %></td>	
+		</tr>			
+	<% end -%>
+</table>

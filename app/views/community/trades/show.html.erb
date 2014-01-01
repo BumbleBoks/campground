@@ -1,0 +1,13 @@
+<% provide(:title, "OnTrailAgain Bazaar - Trade") %>
+
+<div id="completed_text">
+	<% if @trade.completed? %>
+		Trade completed!
+	<% end %>
+</div>
+
+<%= render 'trade', { trade: @trade } %>
+
+<div id="trade_options">
+	<%= render "completed_#{@trade.completed}", { trade: @trade } %>	
+</div>

@@ -1,0 +1,10 @@
+<div class ='project_form'>
+	<%= form_for Common::MissingTrail.new , remote: true do |f| -%>
+		<div>
+			<%= f.text_area :info, placeholder: "Write about the trail", rows: 8, class: 'wide_textarea' %>
+		</div>
+		<div id = "add_missing_trail">
+			<%= f.submit "Add trail" %>
+		</div>
+	<% end -%>
+</div>

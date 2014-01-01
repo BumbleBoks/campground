@@ -1,0 +1,5 @@
+<ul>
+	<% trails.each do |trail| %>
+		<li><%= link_to "#{trail.name}, #{trail.state.name}", common_trail_path(trail_link(trail)) %></li>
+	<% end %>
+</ul>

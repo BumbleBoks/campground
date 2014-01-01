@@ -1,0 +1,51 @@
+#picker_popup {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.5);
+	
+	#item_picker {
+/*		background-color:rgb(252, 186, 166);
+*/		background-color:#148666;
+		width : 30%;
+		height: auto;
+		max-height: 30%;
+		position: absolute;
+		top: 35%;
+		left: 35%;
+		border-radius: 10px;
+		box-shadow: -2px 2px rgb(172, 255, 66);
+		overflow-y: scroll;
+		
+		#xbutton {
+			position: relative;
+			left: 93%;
+			top: 5px;
+			width: 20px;
+			height: 20px;
+			font-size: 15px;
+			font-weight: bold;
+			text-align: center;
+			margin: 0;
+			padding: 0;
+			border: 0;
+			background-color: lightgray;
+			color: gray;
+		}
+		
+		p {
+			text-align: center;
+			font-family: helvetica;
+			font-size: 14px;
+			color: rgb(188, 188, 236); ;
+		}
+		
+		li {
+			color: rgb(188, 188, 236);
+			cursor: default;
+		}			
+	}
+}

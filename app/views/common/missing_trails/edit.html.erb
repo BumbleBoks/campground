@@ -1,0 +1,28 @@
+<% provide(:title, "OnTrailAgain - Missing Trail") %>
+<h2> Missing Trail <%= @missing_trail.id -%></h2>
+
+<p> <b>From</b> <%= @missing_trail.user_name -%>, <%= @missing_trail.user_email -%></p>
+<p> 
+	<b>About Trail </b> 
+	<br>
+	<%= @missing_trail.info -%>
+</p>
+
+<p><b> Updates</b>
+	<br>
+	<%= text_with_newlines(@missing_trail.updates) -%>
+</p>
+
+<div class='project_form'>
+	<%= form_for @missing_trail do |f| -%>
+		<div>
+			<%= f.label :updates, "Add update" %>
+			<%= f.text_area :updates, value: "", rows: 10 %>		
+		</div>
+		<div>
+			<%= f.submit "Save updates" %>
+		</div>
+		
+	<% end -%>	
+</div>
+<%= link_to "Back", common_missing_trails_path %>

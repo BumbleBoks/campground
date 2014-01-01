@@ -1,0 +1,27 @@
+<div id="user_community">	
+	<div class="home_logo">
+		<%= link_to "", root_path, alt: "Logo - Home", title: "Home" %>		
+	</div>
+		
+	
+	<% div_name = div_for_side_panes %>
+	<%#= content_tag(:div, class: div_name) do %>
+	
+	<%= content_tag(:div, class: "title_board") do %>	
+		<%#= link_to "Trails", common_trails_path, class: "title_text" %>
+		<%#= link_to image_tag("trail.png", alt: "Trails", title: "Trails"), 
+			common_trails_path %>
+		<div class="trails_board">			
+			<%= link_to "", common_trails_path, alt: "Trails", title: "Trails" %>			
+		</div>								
+	<% end %>
+	
+	<%= content_tag(:div, class: "title_board inactive") do %>
+		<%#= link_to "Bazaar", "#", class: "title_text" %>
+		<%#= link_to_if logged_in?, image_tag("bazaar.png", alt: "Bazaar", title: "Bazaar"), "#" %>
+		<div class="bazaar_board">			
+			<%= link_to_if logged_in?, "", 
+				"#", alt: "Bazaar", title: "Bazaar" %>			
+		</div>								
+	<% end %>
+</div>

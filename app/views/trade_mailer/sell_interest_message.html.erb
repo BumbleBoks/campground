@@ -1,0 +1,4 @@
+<p>Hi <%= @trader.name %>,</p>
+<p><%=  @user.login_id %> has gear, <a href = <%=@trade_url%> ><%= @trade.gear %></a> for sale. <%=  @user.login_id %> can be contacted at <%= @user.email %>.</p>
+<%= render 'trade_info', { trade: @trade } %>
+<p>OnTrailAgain</p>

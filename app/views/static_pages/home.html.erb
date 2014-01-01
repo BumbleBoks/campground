@@ -1,0 +1,27 @@
+<% if logged_in? %>
+	<% provide(:title, "OnTrailAgain - #{current_user.name}'s Nook") %>
+	<h2>My nook </h2>
+	
+	<% if @updates.any? %>
+		<div class="pagination"><%= will_paginate @updates %></div>
+		<%= render_update_partial(@updates, true) %>
+	<% else %>
+		<span class="update_content">
+			No updates for favorite trails
+		</span>
+	<% end %>
+<% else %>	
+	<% provide(:title, "OnTrailAgain") %>
+	<%= link_to "Join", invite_user_path, id: "join_button"  %>	
+	<h2>Welcome</h2>	
+	<%= render layout: 'shared/select_trail' do %>
+		<%= link_to "Get updates", "#", id: "get_updates_button", 
+			data: { request_path: request.path } %>
+	<% end %>
+	<div id = 'missing_trail'>
+		Can't find a trail? Log in and tell us about the trail.
+	</div>
+	<div id = 'home_trail_updates'>
+	</div>
+<% end %>	
+

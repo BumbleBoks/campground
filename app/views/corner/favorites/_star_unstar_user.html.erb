@@ -1,0 +1,7 @@
+<% if current_user.stars.include?(user) %>
+	<%= link_to "Remove from stars", 
+		corner_favorites_remove_star_path({ star_id: user.login_id }),  method: :post, remote: true -%>
+<% else %>
+	<%= link_to "Add to stars", 
+		corner_favorites_add_star_path({ star_id: user.login_id }), method: :post, remote: true -%>
+<% end %>

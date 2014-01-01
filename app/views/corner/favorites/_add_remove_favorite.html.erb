@@ -1,0 +1,7 @@
+<% if current_user.trails.include?(trail) %>
+	<%= link_to "Remove from favorites", corner_favorites_remove_trail_path({ favorite_trail_id: trail.id }), 
+		method: :post, remote: true %>
+<% else %>
+	<%= link_to "Add to favorites", corner_favorites_add_trail_path({ favorite_trail_id: trail.id }), 
+		method: :post, remote: true %>		  
+<% end %>

@@ -1,0 +1,28 @@
+// Place all the styles related to the Community::Updates controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "body_styling";
+
+@mixin association_styling($background_color, $color) {
+	@include body_button_styling($background_color, $color);
+	padding: 5px;
+	margin: 5px;
+}
+
+#completed_text {
+	margin-top: 20px;
+	color: red;
+	font-size: 24px;
+	font-family: times sans-serif;
+	font-style: oblique;
+	font-weight: 600;
+}
+
+#interest_link {
+	@include association_styling(rgb(47, 185, 47), oldlace);
+}
+
+#wishlist_link {
+	@include association_styling(darkorange, oldlace);
+}

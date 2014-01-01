@@ -1,0 +1,25 @@
+<% if show_trail_name %>
+	<span class="update_trail">
+		<%= link_to update.trail.name, common_trail_path(trail_link(update.trail)) %>
+	</span>
+<% end %>
+
+<% if logged_in? && update.author.in?(users_stars) %>
+	<span class="update_content_star">
+<% else %>
+	<span class="update_content">
+<% end %>
+	<%= wrap(update.content) %>
+</span>
+
+<span class="update_time">
+	Posted <%= time_ago_in_words(update.created_at) %> ago
+</span>
+<span class="update_author">
+	<% if logged_in? %>
+		by <%= link_to update.author.login_id, user_path(update.author.login_id) %> 
+		<%= image_tag url_for_avatar(update.author, 20) -%>
+	<% else %>
+		<%= link_to "...", login_path %>
+	<% end %>
+</span>

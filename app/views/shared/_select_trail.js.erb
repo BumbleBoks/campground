@@ -1,0 +1,10 @@
+$('#state_id').val("")
+$('#activity_id').val("")
+$('#state_id').trigger("change")
+<% if trails.count == 0 %>
+	$('#trail_selection_message').show() 
+	$('#trails_found').html("")
+<% else %>
+	$('#trail_selection_message').hide() 
+	$('#trails_found').html("<%= escape_javascript(render 'shared/found_trails', { trails: trails}) %>")
+<% end %>

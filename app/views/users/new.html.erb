@@ -1,0 +1,40 @@
+<% provide(:title, "Join OnTrailAgain") %>
+<h2>Join OnTrailAgain</h2>
+
+<div class="project_form">
+	<%= form_for @user do |f| -%>
+
+		<%= render 'shared/error_messages', object: f.object%>
+
+		<%= hidden_field_tag 'user[token]', @token %>
+		<div>
+			<%= f.label :login_id, "Login ID" %>
+			<%= f.text_field :login_id  %>						
+		</div>
+
+		<div>
+			<%= f.label :name, "Name" %>
+			<%= f.text_field :name  %>		
+		</div>
+
+		<div>
+			<%= f.label :email, "Email" %>
+			<%= f.text_field :email, disabled: true %>
+		</div>
+
+		<div>
+			<%= f.label :password, "Password" %>
+			<%= f.password_field :password  %>
+		</div>
+
+		<div>
+			<%= f.label :password_confirmation, "Confirm password" %>
+			<%= f.password_field :password_confirmation  %>
+		</div>
+
+		<div>
+			<%= f.submit "Create account" %>			
+		</div>
+
+	<% end -%>	
+</div>

@@ -1,0 +1,60 @@
+#message_popup {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.5);
+	
+	#popup_box {
+		background-color:rgb(252, 186, 166);
+		width : 300px;
+		height: 150px;
+		position: absolute;
+		top: 200px;
+		left: 300px;
+		display: none;
+		border-radius: 10px;
+		box-shadow: 2px 2px 2px orangered;
+		
+		#xbutton {
+			position: relative;
+			left: 275px;
+			top: 5px;
+			width: 20px;
+			height: 20px;
+			font-size: 15px;
+			font-weight: bold;
+			text-align: center;
+			margin: 0;
+			padding: 0;
+			border: 0;
+			background-color: lightgray;
+			color: gray;
+		}	
+
+		#message_text {
+			padding: 25px;
+			color: darkgreen;
+			text-align: center;	
+		}		
+		
+		#action_button {
+			position: absolute;
+			left: 120px;
+			top: 110px;			
+			width: 60px;
+			height: 20px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			background-color: whitesmoke;
+			color: red;
+			text-align: center;	
+			border-radius: 5px;
+			box-shadow: 1px 1px gray;
+			cursor: pointer;
+		}		
+		
+	}
+}

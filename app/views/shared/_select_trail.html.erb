@@ -1,0 +1,20 @@
+<%#= text_field_tag "search_trail", nil, placeholder: "Search for trail" %>
+<%= text_field_tag "search_trail", nil, placeholder: "Search for trail", 
+	data: { autocomplete_source: Common::Trail.all.map { |t| "#{t.name}, #{t.state.name}" } }  %>
+<%= link_to "Search", "#", id: "search_button", remote: true, 
+	data: { request_path: search_common_trails_path(" ") } %>
+<br><br>	
+Look for a trail in
+<%= select_tag "state_id", options_from_collection_for_select(Common::State.all, :id, :name), 
+	{ prompt: "Select a state" } %>
+for
+<%= select_tag "activity_id", options_from_collection_for_select(Common::Activity.all, :id, :name), 
+	{ prompt: "Select an activity" } %> <br><br>
+<%= select_tag "trail_id", option_groups_from_collection_for_select(state_activity, :trail_collection,
+	:category_label, :id, :name), 
+	{ prompt: "Select a trail" } %>
+<div id="select_trail_button">
+	<%= yield %>	
+</div>	
+<div id = 'trail_selection_message'>No trail found</div>
+<div id = 'trails_found'></div>

@@ -1,0 +1,9 @@
+<ul>
+	<% log.tags[0..-2].each_with_index do |tag, index| %>
+		<li>
+			<%= hidden_field_tag "corner_log[tags_attributes][#{index+1}][name]", tag.name %>
+			<%= tag.name %> <%= link_to "x", "#", id: "delete_log_tag", class: "log_tag_button" %>
+		</li>	
+	<% end %>
+</ul>
+

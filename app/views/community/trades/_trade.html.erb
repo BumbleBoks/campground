@@ -1,0 +1,5 @@
+<h2><%= trade.trade_type.humanize %></h2>
+<h4><%= trade.gear%> for $<%= trade.price%></h4>
+<h5>at <%= trade.trade_location %> by <%= link_to trade.trader.login_id, user_path(trade.trader.login_id) %></h5>
+
+<p><%= text_with_newlines(trade.description) %></p>

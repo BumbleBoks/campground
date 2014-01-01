@@ -1,0 +1,40 @@
+<% provide(:title, "OnTrailAgain Bazaar - New Trade") %>
+<h2>Start a new trade</h2>
+
+<div class='project_form'>
+	<%= form_for @trade do |f| -%>
+		
+		<%= render 'shared/error_messages', object: f.object %>
+
+		<div>
+			<%= f.collection_radio_buttons(:trade_type, trade_types, :id, :value) do |b|  %>
+				<%= b.label id: 'radio_button_label' %>
+				<%= b.radio_button %>
+			<% end %>
+		</div>
+	
+		<div>
+			<%= f.label :gear, "Gear" %>
+			<%= f.text_field :gear %>
+		</div>
+		
+		<div>
+			<%= f.label :price, "Price ($)" %>
+			<%= f.text_field :price %>
+		</div>
+		
+		<div>
+			<%= f.label :trade_location, "Location" %>
+			<%= f.text_field :trade_location %>
+		</div>
+		
+		<div>
+			<%= f.label :description, "Description" %>
+			<%= f.text_area :description, rows: 8 %>
+		</div>
+	
+	  	<div>
+	  		<%= f.submit "Add trade" %>
+	  	</div>
+	<% end -%>
+</div>

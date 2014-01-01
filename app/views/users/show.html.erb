@@ -1,0 +1,28 @@
+<% provide(:title, "OnTrailAgain - #{@user.name}") %>
+<h2>About <%= @user.name %></h2>
+
+<div id = "other_links_button">
+	<% if current_user?(@user) %>
+		<%= link_to "Change profile", edit_user_path(@user.login_id) -%>
+	<% else %>
+		<%= render 'corner/favorites/star_unstar_user', { user: @user } -%>
+	<% end %>
+</div>	
+
+<div id="user_profile_photo">
+	<a href = "http://www.gravatar.com">
+		<%= image_tag url_for_avatar(@user, 150) -%>
+	</a>
+</div>
+<div id="user_profile_info">
+	<% if current_user?(@user) %>
+		<%= @user.email -%>
+	<% end %>
+	<br><br>
+	Interested in <%= @user.activities.map {|t| t.name}.to_sentence(last_word_connector: " and ") %>
+</div>
+<div id="user_profile_updates">
+	<h4>Updates by <%= @user.name %></h4>
+	<div class="pagination"><%= will_paginate @updates %></div>
+	<%= render_update_partial(@updates) -%>
+</div>

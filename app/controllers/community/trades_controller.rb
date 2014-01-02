@@ -49,6 +49,32 @@ class Community::TradesController < ApplicationController
     redirect_to root_path
   end
   
+  def interested
+    @trade = Community::Trade.find_by(id: params[:trade_id])
+    if current_user_a_user?(@trade)
+      @trade_association = @trade.trade_associations.find_by(user_id: current_user.id)
+      @trade_association.association_type = "interest" and @trade_association.save
+    else
+      @trade.trade_associations.create(user_id: current_user.id, association_type: "interest")
+    end
+    
+    case @trade.trade_type
+    when 'buy'
+      TradeMailer.sell_interest_message(@trade, @current_user).deliver
+
+    when 'sell'
+      TradeMailer.buy_interest_message(@trade, @current_user).deliver
+    end
+    
+    redirect_to :back
+  end
+  
+  def maybe
+    @trade = Community::Trade.find_by(id: params[:trade_id])
+    @trade.trade_associations.create(user_id: current_user.id, association_type: "wishlist")
+    redirect_to :back    
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_users_community_trade

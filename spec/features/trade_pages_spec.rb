@@ -161,7 +161,7 @@ describe "Trade pages" do
     
   end # close trade
   
-  describe "add as a user", pending: true do
+  describe "add as a user" do
     let(:other_user) { FactoryGirl.create(:user) }
     let(:trade) { FactoryGirl.create(:trade, trader: other_user) }
     
@@ -177,10 +177,11 @@ describe "Trade pages" do
         let(:interest_email) { ActionMailer::Base.deliveries.last }
         
         it "check email" do          
-          html_email_message = "<p>#{user.id} is interested in your gear, #{trade.gear}. #{user.id} can be contacted at #{user.email}.<\/p>"
-          text_email_message = "#{user.id} is interested in your gear, #{trade.gear}. #{user.id} can be contacted at #{user.email}."
+          html_email_message = "<p>#{user.login_id} is interested in your gear"
+          text_email_message = "#{user.login_id} is interested in your gear, #{trade.gear}. #{user.login_id} can be contacted at #{user.email}."
 
-          expect(interest_email.to).to eq([user.email])
+          expect(interest_email.to).to eq([other_user.email])
+          expect(interest_email.cc).to eq([user.email])
           expect(interest_email.subject).to eq("Interest in #{trade.gear}")
           expect(interest_email.encoded).to include(html_email_message)
           expect(interest_email.encoded).to include(text_email_message)     
@@ -192,8 +193,7 @@ describe "Trade pages" do
       it { should have_content("#{trade.gear} for $0.0 at #{trade.trade_location}") }
       it { should have_content("#{trade.description}")}
 
-      it { should have_text("Message sent on #{Date.today}: \
-        #{user.id} is interested in your gear. #{user.id} can be contacted at #{user.email}.") }
+      it { should have_text("Added as Interested") }
       it { should_not have_link("Interested") }
       it { should_not have_link("Maybe") }      
     end
@@ -217,10 +217,11 @@ describe "Trade pages" do
           let(:interest_email) { ActionMailer::Base.deliveries.last }
 
           it "check email" do          
-            html_email_message = "<p>#{user.login_id} is interested in your gear, <a href = #{community_trade_url(trade)} >#{trade.gear}</a>. #{user.login_id} can be contacted at #{user.email}.<\/p>"
+            html_email_message = "<p>#{user.login_id} is interested in your gear"
             text_email_message = "#{user.login_id} is interested in your gear, #{trade.gear}. #{user.login_id} can be contacted at #{user.email}."
 
-            expect(interest_email.to).to eq([user.email])
+            expect(interest_email.to).to eq([other_user.email])
+            expect(interest_email.cc).to eq([user.email])
             expect(interest_email.subject).to eq("Interest in #{trade.gear}")
             expect(interest_email.encoded).to include(html_email_message)
             expect(interest_email.encoded).to include(text_email_message)     
@@ -232,8 +233,7 @@ describe "Trade pages" do
         it { should have_content("#{trade.gear} for $0.0 at #{trade.trade_location}") }
         it { should have_content("#{trade.description}")}
 
-        it { should have_text("Message sent on #{Date.today}: \
-          #{user.login_id} is interested in your gear. #{user.login_id} can be contacted at #{user.email}.") }
+        it { should have_text("Added as Interested") }
         it { should_not have_link("Interested") }
         it { should_not have_link("Maybe") }      
       end      

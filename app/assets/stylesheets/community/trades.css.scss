@@ -26,3 +26,12 @@
 #wishlist_link {
 	@include association_styling(darkorange, oldlace);
 }
+
+#interested_status {
+	color: maroon;
+}
+
+#wishlist_status {
+	color: #BD7100;
+	display: inline;
+}

@@ -1,6 +1,21 @@
 <% if current_user?(trade.trader) %>
 	<%= render "traders_choices", { trade: trade, completion_choice: "Close"} %>
 <% else %>
-	<%= link_to "Interested", "#", id: "interest_link" %>
-	<%= link_to "Maybe", "#", id: "wishlist_link" %>
+	<% if current_user_interested?(trade) %>
+		<div id="interested_status">
+			Added as Interested 			
+		</div>
+	<% else %>
+		<%= link_to "Interested", community_trade_interested_path(trade.id), 
+			method: :post, remote: true, id: "interest_link"%>
+
+		<%= link_to_unless current_user_a_user?(trade), "Maybe", 
+			community_trade_maybe_path(trade.id), 
+			method: :post, remote: true, id: "wishlist_link" do %>
+				<div id="wishlist_status">
+					<%= "On wishlist" unless current_user_interested?(trade)%> 			
+				</div>		
+			<% end %>
+	<% end %>
+
 <% end %>

@@ -24,7 +24,10 @@ Campground::Application.routes.draw do
   
   namespace :community do
     resources :updates, only: [:create]
-    resources :trades, except: [:edit]
+    resources :trades, except: [:edit] do
+      post 'interested'
+      post 'maybe'
+    end
   end
 
   get 'favorites/show', to: 'corner/favorites#show', as: 'favorites/show'

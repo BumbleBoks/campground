@@ -2,7 +2,21 @@ class Community::TradesController < ApplicationController
   before_action :set_community_trade, only: [:show]
   before_action :authorize_user
   
-  def index    
+  def index  
+    if params.has_key?(:trades)
+      @trades = current_user.trades.where(completed: false).page(params[:page])
+      @all_trades = false
+      @heading = "My Open Trades"
+    else
+      @trades = Community::Trade.where(completed: false).page(params[:page])  
+      @all_trades = true
+      @heading = "All Open Trades"
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end        
   end
   
   def show 

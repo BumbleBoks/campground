@@ -60,8 +60,8 @@ FactoryGirl.define do
   end
   
   factory :trade, class: Community::Trade do
+    sequence(:gear) { |n| "Gear#{n}" }   
     trade_type 'sell'
-    gear "Gear"
     description "Lorem ipsum"
     trade_location 'Some Location'
     trader

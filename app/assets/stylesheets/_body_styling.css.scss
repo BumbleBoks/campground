@@ -12,6 +12,9 @@
 	background-color: $background_color;
 	color: $color;
 	box-shadow: 2px 2px 2px olive;
+	a {
+		color: $color;
+	}
 }
 
 @mixin flash_message_styling($background_color, $color) {
@@ -32,4 +35,32 @@
 	font-size: 14px;
 	font-weight: 500;
 	margin-left: 10px;
+}
+
+@mixin list_content_styling {
+	font-family: helvetica;
+	font-size: 13px;
+	margin-bottom: 5px;
+	margin-top: 10px;
+	padding-top: 10px;
+	display: block;
+}
+
+@mixin list_time_styling {
+	color: gray;
+	font-size: 12px;
+	font-style: italic;
+	margin-left: 25px;
+	border-bottom: 1px solid gray;
+	width: 80%;
+	padding-bottom: 5px;
+	display: inline;	
+}
+
+@mixin list_user_styling {
+	position: relative;
+	left: 200px;	
+	font-size: 12px;
+	font-style: italic;	
+	display: inline;
 }

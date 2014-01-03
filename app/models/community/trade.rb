@@ -46,5 +46,8 @@ class Community::Trade < ActiveRecord::Base
     end
   end
 
+  # set per_page for trades pagination 
+  self.per_page = 5
+
 end
 

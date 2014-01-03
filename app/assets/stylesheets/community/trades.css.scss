@@ -35,3 +35,41 @@
 	color: #BD7100;
 	display: inline;
 }
+
+.trade_time {
+	@include list_time_styling;
+}
+
+.trade_author {
+	@include list_user_styling;
+}
+
+.trade_item {
+	@include list_content_styling;
+	a {
+		color: cornflowerblue;
+	}
+}
+
+.trade_item_assoc {
+	@include list_content_styling;
+	a {
+		color: blueviolet;
+	}
+}
+
+#my_trades_button {
+	float: right;
+	@include body_button_styling(rgb(250, 174, 114), rgb(131, 86, 55));
+	padding-top: 10px;
+}
+
+#new_trade_button {
+	float: left;
+	@include body_button_styling(rgb(196, 192, 101), snow);
+	padding-top: 10px;
+}
+
+#trades_list {
+	margin-top: 100px;
+}

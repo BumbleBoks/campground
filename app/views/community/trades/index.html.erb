@@ -1,0 +1,16 @@
+<% provide(:title, "OnTrailAgain Bazaar") %>
+<h2><%= @heading %></h2>
+
+<div id="new_trade_button">
+	<%= link_to "Open trade", new_community_trade_path %>	
+</div>
+
+<div id="my_trades_button">
+	<%= render "trade_list_link", { all_trades: @all_trades } %>
+</div>	
+
+<div id="trades_list">
+	<%= render "trade_list", { trades: @trades } %>
+</div>
+
+

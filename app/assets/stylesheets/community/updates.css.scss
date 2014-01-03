@@ -4,15 +4,6 @@
 
 @import "body_styling";
 
-@mixin content_styling {
-	font-family: helvetica;
-	font-size: 13px;
-	margin-bottom: 5px;
-	margin-top: 10px;
-	padding-top: 10px;
-	display: block;
-}
-
 .update_trail {
 	color: lighten(darkgreen, 10%);
 	font-size: 15px;
@@ -23,31 +14,19 @@
 }
 
 .update_time {
-	color: gray;
-	font-size: 12px;
-	font-style: italic;
-	margin-left: 25px;
-	border-bottom: 1px solid gray;
-	width: 80%;
-	padding-bottom: 5px;
-	display: inline;	
+	@include list_time_styling;
 }
 
 .update_author {
-	position: relative;
-	left: 200px;	
-	color: darkgoldenrod;
-	font-size: 12px;
-	font-style: italic;	
-	display: inline;
+	@include list_user_styling;
 }
 
 .update_content {
 	color: cornflowerblue;
-	@include content_styling;
+	@include list_content_styling;
 }
 
 .update_content_star {
 	color: blueviolet;
-	@include content_styling;
+	@include list_content_styling;
 }

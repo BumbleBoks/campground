@@ -16,12 +16,12 @@
 		</div>								
 	<% end %>
 	
-	<%= content_tag(:div, class: "title_board inactive") do %>
+	<%= content_tag(:div, class: div_name ) do %>
 		<%#= link_to "Bazaar", "#", class: "title_text" %>
 		<%#= link_to_if logged_in?, image_tag("bazaar.png", alt: "Bazaar", title: "Bazaar"), "#" %>
 		<div class="bazaar_board">			
 			<%= link_to_if logged_in?, "", 
-				"#", alt: "Bazaar", title: "Bazaar" %>			
+				community_trades_path, alt: "Bazaar", title: "Bazaar" %>			
 		</div>								
 	<% end %>
 </div>

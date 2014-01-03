@@ -1,0 +1,3 @@
+$("h2").html("<%= escape_javascript(@heading) %>")
+$("#my_trades_button").html("<%= escape_javascript(render 'trade_list_link', { all_trades: @all_trades }) %>")
+$("#trades_list").html("<%= escape_javascript(render 'trade_list', { trades: @trades }) %>")

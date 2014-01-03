@@ -1,0 +1,3 @@
+<%= link_to_if all_trades, "My trades", community_trades_path({trades: "my_trades"}), remote: true do %>
+	<%= link_to "All trades", community_trades_path, remote: true %>
+<% end %>

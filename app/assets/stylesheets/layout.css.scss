@@ -61,10 +61,10 @@ $h_font_family: "Trebuchet MS", Helvetica, sans-serif;
 /* universal */
 
 body {
-/*	background: image-url('background.png') repeat fixed center center;
-*/	background: image-url('background.png') no-repeat;
+	background: image-url('background.png') repeat fixed center center;	
+/*	background: image-url('background.png') no-repeat;
 	background-size: cover;
-	margin-left: 10px;
+*/	margin-left: 10px;
 }
 
 /* typography */
@@ -114,7 +114,7 @@ header {
 /*	background: darkseagreen;
 */	
 /*	background: rgb(125,200,125);
-*/	background: darkolivegreen;
+*/	background: rgba(85, 107, 47, 0.9);
 	margin-bottom: 10px;
 	font-size: 25px;
 	color: sienna;
@@ -174,7 +174,7 @@ footer {
 	
 /*	background: rgb(175,250,150);
 	background: darkkhaki;
-*/	background: darkolivegreen;
+*/	background: rgba(85, 107, 47, 0.7);
 	position: relative;
 	bottom: 0px;
 	
@@ -190,7 +190,7 @@ footer {
 	height: 25px;
 	
 	a {
-/*		color: sienna;
+/*		color: sienna;		
 */		color: #FCEC76;
 		text-decoration:none;
 		&:hover {

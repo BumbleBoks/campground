@@ -6,6 +6,76 @@ describe "Trade pages" do
   
   subject { page }
   
+  describe "index page" do
+    before do
+      @trade_user_1 = FactoryGirl.create(:trade, trader: user)
+      @trade_user_2 = FactoryGirl.create(:trade, trade_type: "buy", trader: user)
+      @trades = Array.new
+      10.times do |i|
+        some_user = FactoryGirl.create(:user)
+        @trades[i] = FactoryGirl.create(:trade, trader: some_user)
+      end      
+    end
+    
+    describe "without logging in" do
+      before { visit community_trades_path }
+      it_should_behave_like "login page"
+    end
+    
+    describe "as a regular user" do
+      before do
+        log_in user
+        visit community_trades_path
+      end
+
+      it { should have_page_title("OnTrailAgain Bazaar") }
+      it { should have_selector('h2', 'Open trades') }
+      it { should have_link("My trades") }
+      it { should have_link("Open trade") }
+      it { should_not have_link("All trades") }
+      
+      5.upto(9) do |i| 
+        it { should have_content("Sell #{@trades[i].gear}") }
+        it { should have_content("by #{@trades[i].trader.login_id}") }
+      end
+      
+      describe "with pagination" do
+        4.times do |i| 
+          it { should_not have_content("Sell #{@trades[i].gear}") }
+        end        
+      end
+
+      describe "should not have completed trade", pending: true do
+        before do 
+          @trades[7].completed = true 
+          visit community_trades_path
+        end
+        it { should_not have_content("Sell #{@trades[7].gear}") }
+      end
+    
+      describe "to new trade page" do
+        before { click_link "Open trade" }
+        
+        it { should have_page_title("OnTrailAgain Bazaar - New Trade") }
+        it { should have_selector('h2', 'Start a new trade') }
+      end
+
+      describe "to my trades" do
+        before { click_link "My trades" }
+        
+        it { should have_content("Buy #{@trade_user_2.gear}") }
+        it { should have_content("Sell #{@trade_user_1.gear}") }
+
+        it { should_not have_content("Sell #{@trades[9].gear}") }
+        
+        it { should_not have_link("My trades") }
+        it { should have_link("All trades") }
+        
+      end
+      
+    end # regular user
+  end # index page
+  
   describe "create a new trade" do
     let (:submit) { "Add trade" }
     

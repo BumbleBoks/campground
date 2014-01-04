@@ -1,3 +1,5 @@
+@import "body_styling";
+
 #trail_map {
 /*	position: relative;
 	top: 20px;
@@ -26,11 +28,7 @@
 	width: 350px;
 }
 
-#search_button {
-	background-color: seagreen;
-	color: white;
-	border-radius: 5px;
-	padding: 4px;
-	font-family: Arial;
-	font-size: 12px;
+#search_trail_button
+{
+	@include search_button_styling;
 }

@@ -7,6 +7,12 @@ class Community::TradesController < ApplicationController
       @trades = current_user.trades.where(completed: false).page(params[:page])
       @all_trades = false
       @heading = "My Open Trades"
+    elsif params.has_key?(:q)
+      search_params = params[:q].downcase
+      @trades = Community::Trade.where("LOWER(gear) LIKE ? or LOWER(description) LIKE ?", 
+        "%#{search_params}%", "%#{search_params}%").page(params[:page])
+      @all_trades = false
+      @heading = "Search Results"
     else
       @trades = Community::Trade.where(completed: false).page(params[:page])  
       @all_trades = true

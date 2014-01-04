@@ -1,7 +1,7 @@
 <%#= text_field_tag "search_trail", nil, placeholder: "Search for trail" %>
 <%= text_field_tag "search_trail", nil, placeholder: "Search for trail", 
 	data: { autocomplete_source: Common::Trail.all.map { |t| "#{t.name}, #{t.state.name}" } }  %>
-<%= link_to "Search", "#", id: "search_button", remote: true, 
+<%= link_to "Search", "#", id: "search_trail_button", remote: true, 
 	data: { request_path: search_common_trails_path(" ") } %>
 <br><br>	
 Look for a trail in

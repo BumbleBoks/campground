@@ -64,3 +64,12 @@
 	font-style: italic;	
 	display: inline;
 }
+
+@mixin search_button_styling {
+	background-color: seagreen;
+	color: white;
+	border-radius: 5px;
+	padding: 4px;
+	font-family: Arial;
+	font-size: 12px;
+}

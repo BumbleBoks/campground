@@ -7,11 +7,11 @@ search_trail_autocomplete = ->
   $("#search_trail").autocomplete
     source: $("#search_trail").data('autocompleteSource')
     select: (event, ui) ->
-      $('#search_button').click()
-  $('#search_button').click (event) ->
-    orig_href = $('#search_button').data('request-path')
-    #orig_href = $('#search_button').attr('href')
-    $('#search_button').attr('href', orig_href + $("#search_trail").val())
+      $('#search_trail_button').click()
+  $('#search_trail_button').click (event) ->
+    orig_href = $('#search_trail_button').data('request-path')
+    #orig_href = $('#search_trail_button').attr('href')
+    $('#search_trail_button').attr('href', orig_href + $("#search_trail").val())
     return true
 
 # show the button associated with the select_trail partial

@@ -73,6 +73,39 @@ describe "Trade pages" do
         
       end
       
+      # TODO PhantomJS
+      # describe "search for phrase with results" do
+      #   before do
+      #     @other_user = FactoryGirl.create(:user)
+      #     @find_trade = FactoryGirl.create(:trade, trader: @other_user, gear: "Harness")          
+      #     fill_in 'trade_search_phrase', with: "harness"
+      #     click_link 'Search'
+      #   end
+      #   
+      #   it { should have_link("All trades") }
+      #   it { should have_content("Sell Harness") }
+      #   it { should have_content(@other_user.login_id) }
+      #   
+      #   9.times do |i| 
+      #     it { should_not have_content("Sell #{@trades[i].gear}") }
+      #   end        
+      # end # search with results
+      
+      # describe "search for phrase with zero results" do
+      #   before do
+      #     visit community_trades_path
+      #     fill_in 'trade_search_phrase', with: "headlamp"
+      #     click_link 'Search'
+      #   end
+      #   
+      #   it { should have_link("All trades") }
+      #   it { should have_content("No matches found.") }
+      #   
+      #   9.times do |i| 
+      #     it { should_not have_content("Sell #{@trades[i].gear}") }
+      #   end                
+      # end # search with no results      
+      
     end # regular user
   end # index page
   

@@ -9,8 +9,16 @@
 	<%= render "trade_list_link", { all_trades: @all_trades } %>
 </div>	
 
+<%= text_field_tag "trade_search_phrase", nil, placeholder: "Search for item" %>
+<%= link_to "Search", "", id: "search_trade_button", remote: true,
+ 	data: { request_path: community_trades_path } %>
+
 <div id="trades_list">
 	<%= render "trade_list", { trades: @trades } %>
+</div>
+
+<div id="trade_selection_message">
+	<%= "No trades found" unless @trades.any? %>
 </div>
 
 

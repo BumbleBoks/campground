@@ -1,9 +1,13 @@
 <% provide(:title, "OnTrailAgain - #{current_user.name}'s Favorites") %>
+
+<div id="other_links_button_wrapper">
+	<div id = "other_links_button">
+		<%= link_to "Change favorites", favorites_new_path %>
+	</div>		
+</div>
+
 <h2>My Favorites</h2>
 
-<div id = "other_links_button">
-	<%= link_to "Change favorites", favorites_new_path %>
-</div>	
 
 <div id="favorite_activities">
 	<h4>Activities</h4>

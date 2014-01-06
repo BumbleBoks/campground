@@ -23,6 +23,10 @@
 	color: darkgreen;
 }
 
+#log_header {
+	display: table;
+}
+
 #read_log_button {
 	@include body_button_styling(tan, oldlace);
 	float: right;
@@ -34,4 +38,16 @@
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	font-weight: normal;	
 	cursor: pointer;
+	display: table-cell;
+	@media screen and (max-width: $mobile-style-width) {
+		display: table-row;
+		margin-bottom: 20px;
+	};
+}
+
+#date_picker {
+	display: table-cell;
+	@media screen and (max-width: $mobile-style-width) {
+		display: table-row;
+	};
 }

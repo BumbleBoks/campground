@@ -1,9 +1,11 @@
 <% provide(:title, "OnTrailAgain - #{current_user.name}'s Favorites") %>
-<h2>New Favorites</h2>
 
 <%= form_tag corner_favorites_path do %>
-	<%= submit_tag "Save favorites", id: "other_links_button" %>
-
+	<div id="other_links_button_wrapper">
+		<%= submit_tag "Save favorites", id: "other_links_button" %>			
+	</div>
+	<h2>New Favorites</h2>
+		
 <div id="favorite_activities">
 	<%= hidden_field_tag "user[activity_ids][]" %>
 	<% Common::Activity.all.each do |activity| %>

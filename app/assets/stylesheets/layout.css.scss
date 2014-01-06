@@ -345,10 +345,13 @@ footer {
 
 #other_links_button {
 	@include body_button_styling(tan, oldlace);
-	position: absolute;
-	top: 80px;
+	position: relative;
+	float: right;
+	top: -10%;
+/*	top: 80px;	
 	right: 40px;
-	
+*/	
+	margin-left: 20px;
 	padding: 0 3px 3px 0;
 	height: 40px;
 	width: 200px;
@@ -357,6 +360,17 @@ footer {
 		position: relative;
 		top: 12px;		
 	}	
+	
+	@media screen and (max-width: $mobile-style-width) {
+		display: table-row;
+	};
+}
+
+#other_links_button_wrapper {
+	@media screen and (max-width: $mobile-style-width) {
+		display: table;
+		float: right;
+	};	
 }
 
 .hidden {

@@ -1,13 +1,16 @@
 <% provide(:title, "OnTrailAgain - #{@user.name}") %>
-<h2>About <%= @user.name %></h2>
 
-<div id = "other_links_button">
-	<% if current_user?(@user) %>
-		<%= link_to "Change profile", edit_user_path(@user.login_id) -%>
-	<% else %>
-		<%= render 'corner/favorites/star_unstar_user', { user: @user } -%>
-	<% end %>
-</div>	
+<div id = "other_links_button_wrapper">
+	<div id = "other_links_button">
+		<% if current_user?(@user) %>
+			<%= link_to "Change profile", edit_user_path(@user.login_id) -%>
+		<% else %>
+			<%= render 'corner/favorites/star_unstar_user', { user: @user } -%>
+		<% end %>
+	</div>	
+</div>
+
+<h2>About <%= @user.name %></h2>
 
 <div id="user_profile_photo">
 	<a href = "http://www.gravatar.com">

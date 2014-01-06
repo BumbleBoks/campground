@@ -1,3 +1,5 @@
+$mobile-style-width: 1024px;
+
 @mixin body_button_styling($background_color, $color) {
 	border-radius: 5px;
 	width: 150px;
@@ -44,6 +46,7 @@
 	margin-top: 10px;
 	padding-top: 10px;
 	display: block;
+	word-wrap: break-word;
 }
 
 @mixin list_time_styling {

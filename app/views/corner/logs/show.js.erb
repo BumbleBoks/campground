@@ -1,0 +1,3 @@
+$("h2").html("My Logs");
+ $("#read_log_button").attr('data-log-dates', "<%= escape_javascript(@log_dates.to_s) %>");
+$("#log_display").html("<%= escape_javascript(render 'log_show', { log: @log }) %>");

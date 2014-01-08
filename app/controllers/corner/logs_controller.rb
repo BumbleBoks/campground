@@ -2,23 +2,12 @@ class Corner::LogsController < ApplicationController
   before_action :authorize_user
   before_action :get_date_and_log, only: [:show, :edit]
   
-  # def new
-  #   @log = current_user.logs.build
-  #   @tag = @log.tags.build
-  # end
-  # 
-  # def create    
-  #   @log = current_user.logs.build(log_params)
-  #   if @log.save && @log.update_tags(log_tag_params[:tags_attributes])
-  #     flash[:success] = "Log successfully added"
-  #     redirect_to generate_log_path(@log)
-  #   else
-  #     render 'new'
-  #   end
-  # end
-    
   def edit
     @tags = @log.tags.build
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   def update 
@@ -28,20 +17,19 @@ class Corner::LogsController < ApplicationController
     end
     
     if @log.update(log_params) && @log.update_tags(log_tag_params[:tags_attributes])
-        flash[:success] = "Log successfully saved"
-        redirect_to generate_log_path(@log)
-      else
-        render 'edit'
-      end      
+      flash[:success] = "Log successfully saved"
+      redirect_to generate_log_path(@log)
+    else
+      render 'edit'
+    end      
   end
-        
-    
+            
   def show
     if @log.nil?
       @log = current_user.logs.build(log_date: @date)
       @tag = @log.tags.build
       render 'edit'
-    end
+    end    
   end
   
   def destroy
@@ -51,11 +39,6 @@ class Corner::LogsController < ApplicationController
     redirect_to(corner_logs_path(log_date.year, log_date.month, log_date.day))
   rescue    
     redirect_to root_path
-    # unless @log.nil?    
-    #   log_date = @log.log_date
-    #   @log.destroy
-    #   redirect_to(corner_logs_path(log_date.year, log_date.month, log_date.day))
-    # end
   end
   
   

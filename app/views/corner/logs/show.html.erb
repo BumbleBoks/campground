@@ -1,9 +1,10 @@
 <% provide(:title, "OnTrailAgain - #{current_user.name}'s Diary") %>
 <h2>My Logs</h2>
 
-<%= render 'log_header', { log_dates: @log_dates } %>
-<div id="corner_log_log_date" class="hidden"></div>
+<div id="log_header">
+	<%= render 'log_header', { log_dates: @log_dates } %>	
+</div>
 
-<div id="selected_log">	
-	<%= render 'log', { log: @log } %>
+<div id="log_display">
+	<%= render 'log_show', { log: @log } %>
 </div>

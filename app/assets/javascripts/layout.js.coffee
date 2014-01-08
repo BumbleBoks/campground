@@ -12,8 +12,9 @@ refresh_page_if_needed = ->
 check_for_flash_messages = (request) ->
   flash_message = request.getResponseHeader('X-Message')
   flash_type = request.getResponseHeader('X-Message-Type')
-  $("#flash_messages").html("<div class = 'flash_" + flash_type + "'>" + flash_message + '</div')
-  $(".flash_"+flash_type).delay(5000).slideUp
+  if flash_type != null
+    $("#flash_messages").html("<div class = 'flash_" + flash_type + "'>" + flash_message + '</div')
+    $(".flash_"+flash_type).delay(5000).slideUp
 
 use_current_date_for_log = ->
   date = new Date()

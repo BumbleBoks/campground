@@ -6,15 +6,14 @@
 
 load_date_picker = ->
   userDate = null;
-  patharray = window.location.pathname.split("/")
-  length = patharray.length
 
-  length-- if (patharray[length-1] == "edit") 
+  dateString =  $("#corner_log_log_date").attr("value") || $("#corner_log_log_date").html() 
+  datearray = dateString.split("-")
 
   userDate = new Date()
-  userDate.setFullYear(patharray[length-3])
-  userDate.setMonth(patharray[length-2]-1)
-  userDate.setDate(patharray[length-1])
+  userDate.setFullYear(datearray[0])
+  userDate.setMonth(datearray[1]-1)
+  userDate.setDate(datearray[2])
 
   $("#corner_log_log_date").bind 'date_change', (event) ->
     selectedDate = datePicker.selectedDate
@@ -22,9 +21,16 @@ load_date_picker = ->
     month = selectedDate.getMonth() + 1
     day = selectedDate.getDate()
     new_url = ['/corner/logs', year, month, day].join('/')
-    location.replace new_url
+    $.ajax
+      url: new_url
+      type: 'GET'
+      dataType: "script"
+      complete: () -> 
+        load_date_picker() 
+        update_log_tags()
 
   if !datePicker
+    $("#date_picker").empty()
     datePicker = new DatePicker
     datePicker.initialize($("#date_picker"), $("#corner_log_log_date"), userDate)
 
@@ -41,7 +47,13 @@ load_log_picker = ->
       selectedDateArray = firstArray[1].trim().split(" ").filter((el) -> return el != "")
       new_url = ['/corner/logs', selectedDateArray[2], monthArray.indexOf(selectedDateArray[0]) + 1, \
         selectedDateArray[1]].join('/')
-      location.replace new_url
+      $.ajax
+        url: new_url
+        type: 'GET'
+        dataType: "script"
+        complete: () -> 
+          load_date_picker() 
+          update_log_tags()
 
     if !logPicker
       emptyMessage = "There are no saved logs."
@@ -79,7 +91,6 @@ update_log_tags = ->
     $(event.target).closest('li').remove()
 
 
-
 $(document).on "page:load", ->
   logs_load()
 
@@ -89,4 +100,3 @@ $(document).ready ->
 
 $(document).on "page:change", ->
   update_log_tags()
-      

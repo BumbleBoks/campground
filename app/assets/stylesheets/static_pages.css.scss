@@ -31,6 +31,17 @@
 	@include trail_buttons_styling;
 }
 
+#join_button_wrapper {
+	a {
+		transition: $transition-style;
+	}
+	
+	a:hover {
+		color: rgb(58, 141, 6);
+		box-shadow: 2px 2px darkgray;			
+	};
+}
+
 #join_button {
 	float: right;
 	color: #9E533B;
@@ -47,4 +58,8 @@
 	text-align: center;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	font-weight: normal;	
+	
+	a:hover {
+		box-shadow: white;
+	};
 }

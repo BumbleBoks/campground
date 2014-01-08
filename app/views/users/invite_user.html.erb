@@ -7,7 +7,7 @@
 		
 		<div>
 			<%= label_tag :invite_email, "Email" %>
-			<%= text_field_tag :invite_email  %>
+			<%= email_field_tag :invite_email, "", autofocus: true %>
 		</div>
 		
 		<%= submit_tag "Send me an invite" %>

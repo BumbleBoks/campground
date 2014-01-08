@@ -7,17 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+		
 <%= render partial: 'layouts/individual_pane' %>
 
 <%= render partial: 'layouts/community_pane' %>
+
 <div id="user_dynamic">
 	<div class = "hidden" id = "last_loaded"><%= Time.zone.now %></div>
 	<%= render partial: 'layouts/header' %>
 	<div id="user_display">
 		<div id="flash_messages">
-			<% flash.each do |key, value| %>
-				<%= content_tag(:div, value, class: "flash_#{key}") %>
-			<% end %>			
+			<%= render 'shared/flash_messages', { flash: flash } %>
 		</div>
 		<%= yield %>		
 	</div>

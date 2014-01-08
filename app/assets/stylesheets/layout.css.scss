@@ -17,18 +17,14 @@ $h_font_family: "Trebuchet MS", Helvetica, sans-serif;
 	top: 0;
 	bottom: 0;
 	overflow: visible;
-/*	border-bottom: $static_border;
-*/}
+}
 
 @mixin header_button_styling {
 	border-radius: 10px;
 	width: 100px;
 	height: 20px;
 	font-size: 18px;
-/*	margin-top: -20px;
-	padding-top: 14px;
-	padding-bottom: 14px;
-*/	margin-top: -16px;
+	margin-top: -16px;
 	padding-top: 12px;
 	padding-bottom: 12px;
 	text-decoration: none;
@@ -56,6 +52,10 @@ $h_font_family: "Trebuchet MS", Helvetica, sans-serif;
 		width: 50px;
 		height: 50px;
 	}
+	
+	a:hover {
+		border: 1px solid darkgreen;
+	};
 }
 
 /* universal */
@@ -94,6 +94,11 @@ h5 {
 a {
 	color: saddlebrown;
 	text-decoration: none;
+	transition: $transition-style;
+	
+	&:hover {
+		color: darkgreen;
+	};
 }
 
 li {
@@ -107,30 +112,26 @@ li {
 input[type="submit"] {
 	border: none;
 	box-shadow: 2px 2px 2px olive;
+	
+	&:hover {
+		color: rgb(4, 80, 4);
+		text-shadow: 1px 1px 1px white;
+	};
 }
 
 /* header */
 header {
-/*	background: darkseagreen;
-*/	
-/*	background: rgb(125,200,125);
-*/	background: rgba(85, 107, 47, 0.9);
+	background: rgba(85, 107, 47, 0.9);
 	margin-bottom: 10px;
 	font-size: 25px;
 	color: sienna;
 	padding-top: 20px;
 	font-weight: bold;
-/*	border-bottom: $static_border;
-*/	height: 30px;
-	
+	height: 30px;
 	
 	#right_buttons {		
 		float: right;
-/*		background-color: rgb(226, 162, 136);
-		color: sienna;		
-		background-color: #9E533B;
-		color: #FFAC30;
-*/		background-color: #BE6E54;
+		background-color: #BE6E54;
 		color: #FFE6C2;
 		box-shadow: -2px 0px white;
 		margin-right: 5px;
@@ -140,15 +141,23 @@ header {
 	
 	#left_buttons {
 		float: left;	
-/*		color: rgb(226, 162, 136);
-		background-color: sienna;				
-*/		
+		
 		color: #9E533B;
 		background-color: #FFAC30;
 		box-shadow: 2px 0 white;
-		@include header_button_styling;
+		@include header_button_styling;		
 	}
 	
+	#header_button_wrapper {
+		a {
+			transition: $transition-style;
+		}
+		
+		a:hover {
+			color: rgb(58, 141, 6);
+			box-shadow: 2px 0 darkgray;			
+		};
+	}
 	
 	h1 {
 		text-align: center;
@@ -156,25 +165,26 @@ header {
 		font-family: Arial;
 		font-size: 24px;
 		color: darkkhaki;
-/*		text-align: center;
-		margin-top: -22px;
-*/
+
 		a {
 			font-family: Arial;
 			font-size: 24px;
 			color: darkkhaki;
-			text-decoration: none;			
+			text-decoration: none;
+			text-shadow: 1px 0 0 #010301;
+			transition: $transition-style;			
+			
+			&:hover {
+				color: darkkhaki;
+				text-shadow: 1px 0 0 #555201;
+			};
 		}
 	}	
-	
 }
 
 /* footer */
 footer {
-	
-/*	background: rgb(175,250,150);
-	background: darkkhaki;
-*/	background: rgba(85, 107, 47, 0.7);
+	background: rgba(85, 107, 47, 0.7);
 	position: relative;
 	bottom: 0px;
 	
@@ -183,22 +193,20 @@ footer {
 	margin-bottom: 0px;
 	padding-bottom: 0px;
 	border-bottom: 0px;
-/*	border-top: 2px solid darkseagreen;
-*/	color: sienna;
+	color: sienna;
 	font-size: 16px;
 	font-family: "Andale Mono";
 	height: 25px;
 	
 	a {
-/*		color: sienna;		
-*/		color: #FCEC76;
+		color: #FCEC76;
 		text-decoration:none;
+		transition: $transition-style;
+		
 		&:hover {
-/*			color: brown;
-*/			color: white;
+			color: white;
 		}
 	}
-	
 	
 	#right_links {
 		float: right;
@@ -223,14 +231,14 @@ footer {
 	float: right;
 	@include static_styling;
 	right: 0;
-/*	border-left: $static_border;
-*/}
+}
+
 #user_community {
 	float: left;
 	@include static_styling;
 	left: 0;
-/*	border-right: $static_border;	
-*/}
+}
+
 #user_dynamic {
 	position: absolute;
 	left: $static_width;
@@ -243,18 +251,12 @@ footer {
 		overflow: scroll;
 		height: 82%;		
 		margin: 15px;
-/*		border: 1px solid green;
-		background-color: ivory;
-*/		background-color: whitesmoke;
+		background-color: whitesmoke;
 		padding-left: 10px;
 		padding-right: 10px;
-/*		border-radius: 10px;
-*/		
-		
 		font-family: Helvetica;
 		font-size: 13px;
 		color: teal;
-		
 		
 		.flash_error {
 			@include flash_message_styling(pink, red);
@@ -280,7 +282,7 @@ footer {
 
 .home_logo {
 	@include panel_logo_styling;
-	background-position: 0 -100px;
+	background-position: 0 -100px;	
 }
 
 .user_profile {
@@ -312,9 +314,15 @@ footer {
 	a {
 		display: block;		
 		height: 100px;
-		width: 160px;		
+		width: 160px;	
+		transition: $transition-style;	
 	}
-	
+
+	a:hover {
+		border-radius: 20px;
+		box-shadow: 0px 2px rgb(82, 255, 0);		
+	}
+		
 	.trails_board {
 		@include board_styling;
 		background-position: 0 0;	
@@ -359,11 +367,33 @@ footer {
 		color:oldlace;
 		position: relative;
 		top: 12px;		
+		transition: $transition-style;
 	}	
+	
+	a:hover {
+		color: darkolivegreen;
+		text-shadow: 1px 1px 1px white;
+	}
 	
 	@media screen and (max-width: $mobile-style-width) {
 		display: table-row;
 	};
+}
+
+input[type="submit"]#other_links_button {
+	color:oldlace;
+	position: relative;
+	top: 12px;		
+	transition: $transition-style;
+	
+	&:hover {
+		color: darkolivegreen;
+		text-shadow: 1px 1px 1px white;
+	}
+	
+	&:focus {
+		outline: none;
+	}
 }
 
 #other_links_button_wrapper {

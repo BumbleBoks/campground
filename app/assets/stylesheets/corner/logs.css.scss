@@ -43,6 +43,16 @@
 		display: table-row;
 		margin-bottom: 20px;
 	};
+	
+	a {
+		transition: $transition-style;
+	}	
+	
+	a:hover {
+		color: darkolivegreen;
+		text-shadow: 1px 1px 1px white;
+	}
+	
 }
 
 #date_picker {

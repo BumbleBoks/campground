@@ -46,7 +46,8 @@ load_log_picker = ->
     if !logPicker
       emptyMessage = "There are no saved logs."
       logPicker = new ItemPicker
-      logPicker.initialize($("body"), datesArray, emptyMessage, $("#corner_log_log_date")) 
+      logPicker.initialize($("body"), datesArray, emptyMessage, $("#corner_log_log_date"))
+      return false
 
 logs_load = ->
   load_date_picker()

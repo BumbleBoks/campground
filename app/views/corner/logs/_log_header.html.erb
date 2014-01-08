@@ -1,5 +1,6 @@
 <div id="log_header">
-	<%= content_tag("div", "Read logs", id: "read_log_button", data: { log_dates: log_dates })%>
+	<%#= content_tag("div", "Read logs", id: "read_log_button", data: { log_dates: log_dates })%>
+	<%= content_tag("div", link_to("Read logs", ""), id: "read_log_button", data: { log_dates: log_dates })%>
 	<div id="date_picker"></div>	
 </div>
 <!-- &darr;

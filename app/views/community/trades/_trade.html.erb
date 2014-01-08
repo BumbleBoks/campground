@@ -3,7 +3,7 @@
 <% else %>
 	<span class="trade_item">
 <% end %>
-	<%= link_to "#{trade.trade_type.humanize} #{trade.gear}", community_trade_path(trade.id) %>
+	<%= link_to "#{trade.trade_type.humanize} #{trade.gear}", community_trade_path(trade.id), remote: true %>
 </span>
 
 <span class="trade_time">

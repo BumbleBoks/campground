@@ -1,4 +1,5 @@
 $mobile-style-width: 1024px;
+$transition-style: all 1s ease 0;
 
 @mixin body_button_styling($background_color, $color) {
 	border-radius: 5px;

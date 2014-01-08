@@ -12,7 +12,9 @@
 	<% end %>
 <% else %>	
 	<% provide(:title, "OnTrailAgain") %>
-	<%= link_to "Join", invite_user_path, id: "join_button"  %>	
+	<div id="join_button_wrapper">
+		<%= link_to "Join", invite_user_path, id: "join_button"  %>			
+	</div>
 	<h2>Welcome</h2>	
 	<%= render layout: 'shared/select_trail' do %>
 		<%= link_to "Get updates", "#", id: "get_updates_button", 

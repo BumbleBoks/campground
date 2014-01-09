@@ -1,14 +1,15 @@
-<div id="user_individual">	
-	<div class="user_profile">	
-		<% if logged_in? %>
-			<%= link_to image_tag(url_for_avatar(current_user, 50)), 
-				user_path(current_user.login_id), alt: "Profile", title: "Profile" %>			
-		<% else %>
-			<%= link_to "", login_path, alt: "Log in", title: "Log in" %>			
-		<% end %>
-				
-	</div>
-	
+<div id="user_individual">
+	<div class="column_logo">
+		<div class="user_profile">	
+			<% if logged_in? %>
+				<%#= link_to "", user_path(current_user.login_id), alt: "Profile", title: "Profile" %>			
+				<%= link_to image_tag(url_for_avatar(current_user, 50)), 
+					user_path(current_user.login_id), alt: "Profile", title: "Profile" %>			
+			<% else %>
+				<%= link_to "", login_path, alt: "Log in", title: "Log in" %>			
+			<% end %>
+		</div>		
+	</div>	
 	
 	<% div_name = div_for_side_panes %>
 	<%= content_tag(:div, class: div_name ) do %>

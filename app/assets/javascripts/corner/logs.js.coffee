@@ -7,8 +7,8 @@
 load_date_picker = ->
   userDate = null;
 
-  dateString =  $("#corner_log_log_date").attr("value") || $("#corner_log_log_date").html() 
-  datearray = dateString.split("-")
+  dateString =  $("#corner_log_log_date").attr("value") || $("#corner_log_log_date").html() || ""
+  datearray = dateString.split("-") 
 
   userDate = new Date()
   userDate.setFullYear(datearray[0])
@@ -61,9 +61,20 @@ load_log_picker = ->
       logPicker.initialize($("body"), datesArray, emptyMessage, $("#corner_log_log_date"))
       return false
 
+use_current_date_for_log = ->
+  date = new Date()
+  orig_href = $(".diary_board a").attr("href") || ""
+  href_components = orig_href.split("/")
+  href_length = href_components.length
+  href_components[href_length - 3] = date.getFullYear() 
+  href_components[href_length - 2] = date.getMonth() + 1
+  href_components[href_length - 1] = date.getDate() 
+  $(".diary_board a").attr("href", href_components.join("/"))
+
 logs_load = ->
   load_date_picker()
   load_log_picker()
+  use_current_date_for_log()
 
 # this updates tags for the log
 update_log_tags = ->

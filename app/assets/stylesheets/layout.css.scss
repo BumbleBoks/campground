@@ -2,7 +2,9 @@
 
 /* variables */
 /*$static_background: rgba(210, 180, 140, 0.7);
-*/$static_background: rgba(170, 124, 62, 0.7);
+*/
+$static_background: rgba(170, 124, 62, 0.7);
+$static_portrait_background: rgba(170, 124, 62, 1.0);
 $static_border: 2px solid brown;
 $static_width: 200px;
 $static_opacity: 0.5;
@@ -17,6 +19,16 @@ $h_font_family: "Trebuchet MS", Helvetica, sans-serif;
 	top: 0;
 	bottom: 0;
 	overflow: visible;
+}
+
+@mixin static_portrait_styling {
+	width: 25px;
+	
+	&:hover {
+		background-color: $static_portrait_background;
+		width: $static_width;
+		z-index: 5;
+	};	
 }
 
 @mixin header_button_styling {
@@ -35,27 +47,14 @@ $h_font_family: "Trebuchet MS", Helvetica, sans-serif;
 
 @mixin board_styling {
 	height: 100px;
-	width: 160px;		
+	width: 100%;
 	background: image-url("images-sprite.png");
 }
 
 @mixin panel_logo_styling {
-	width: 50px;
 	height: 50px;
-	background: image-url("images-sprite.png");
-	position: relative;
-	top: 10px;
-	left: 75px;
-	
-	a {
-		display: block;
-		width: 50px;
-		height: 50px;
-	}
-	
-	a:hover {
-		border: 1px solid darkgreen;
-	};
+	width: 100%;
+	background: image-url("images-sprite.png");	
 }
 
 /* universal */
@@ -129,6 +128,13 @@ header {
 	font-weight: bold;
 	height: 30px;
 	
+	@media screen and (orientation: portrait) {
+		position: absolute;
+		top: -45px;
+		left: 5%;
+		width: 90%;
+	}
+
 	#right_buttons {		
 		float: right;
 		background-color: #BE6E54;
@@ -137,8 +143,7 @@ header {
 		margin-right: 5px;
 		@include header_button_styling;
 	}
-	
-	
+		
 	#left_buttons {
 		float: left;	
 		
@@ -198,6 +203,13 @@ footer {
 	font-family: "Andale Mono";
 	height: 25px;
 	
+	@media screen and (orientation: portrait) {
+		position: absolute;
+		bottom: -55px;
+		left: 5%;
+		width: 90%;
+	}
+	
 	a {
 		color: #FCEC76;
 		text-decoration:none;
@@ -231,12 +243,18 @@ footer {
 	float: right;
 	@include static_styling;
 	right: 0;
+	@media screen and (orientation: portrait) {
+		@include static_portrait_styling;
+	}
 }
 
 #user_community {
 	float: left;
 	@include static_styling;
 	left: 0;
+	@media screen and (orientation: portrait) {
+		@include static_portrait_styling;
+	}
 }
 
 #user_dynamic {
@@ -247,6 +265,13 @@ footer {
 	bottom: 0;
 	margin: 10px;	
 	
+	@media screen and (orientation: portrait) {
+		left: 10px;
+		right: 10px;
+		top: 45px;
+		bottom: 45px;
+	}
+
 	#user_display {
 		overflow: scroll;
 		height: 82%;		
@@ -258,6 +283,10 @@ footer {
 		font-size: 13px;
 		color: teal;
 		
+		@media screen and (orientation: portrait) {
+			height: 100%;
+		}
+
 		.flash_error {
 			@include flash_message_styling(pink, red);
 		}
@@ -280,14 +309,37 @@ footer {
 	}		
 }
 
-.home_logo {
-	@include panel_logo_styling;
-	background-position: 0 -100px;	
-}
 
-.user_profile {
-	@include panel_logo_styling;
-	background-position: -50px -100px;
+.column_logo {
+	height: 50px;	
+	margin: 10px 75px 10px 75px;
+	
+	a {
+		display: block;		
+		height: 50px;
+		width: 100%;	
+	}	
+
+	a:hover {
+		border: 1px solid darkgreen;
+	};
+	
+	img {
+		display: block;		
+		height: 50px;
+		width: 100%;	
+	}	
+	
+	.home_logo {
+		@include panel_logo_styling;
+		background-position: 0 -100px;	
+	}
+
+	.user_profile {
+		@include panel_logo_styling;
+		background-position: -50px -100px;
+	}
+	
 }
 
 .title_board {
@@ -314,7 +366,7 @@ footer {
 	a {
 		display: block;		
 		height: 100px;
-		width: 160px;	
+		width: 100%;	
 		transition: $transition-style;	
 	}
 
@@ -342,8 +394,6 @@ footer {
 		@include board_styling;
 		background-position: -480px 0;	
 	}
-
-
 }
 
 .inactive {

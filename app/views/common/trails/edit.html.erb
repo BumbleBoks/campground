@@ -1,7 +1,7 @@
 <% provide(:title, "OnTrailAgain - Edit Trail") %>
 <h2>Editing <%= @trail.name %></h2>
 
-<div class='project_form'>
+<div class='project_form' role='form'>
 	<%= form_for @trail, url: common_trail_path(trail_link(@trail)) do |f| -%>
 		<%= render 'fields', f: f %>
 

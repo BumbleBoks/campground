@@ -1,0 +1,23 @@
+<div>
+	<%= f.label :login_id, "Login ID" %>
+	<%= f.text_field :login_id  %>						
+</div>
+
+<div>
+	<%= f.label :name, "Name" %>
+	<%= f.text_field :name  %>		
+</div>
+
+<div>
+	<%= f.label :email, "Email" %>
+	<%= f.text_field :email, disabled: true %>
+</div>
+	
+<div class = "change_password_button">
+	<%= link_to "Change password", edit_user_path(user_login, page: 2), remote: true %>
+</div>	
+
+<div>
+	<%= hidden_field_tag "page", 1 %>
+	<%= f.submit "Save Profile" %>			
+</div>

@@ -308,6 +308,21 @@ describe "UserPages" do
         it { should have_content('Name can\'t be blank') }
         # it { should have_content('Email is invalid') }
       end # invalid values
+
+      describe "on submitting more invalid values" do
+        before do
+          fill_in "Login ID", with: ""
+          fill_in "Name", with: ""
+          # fill_in "Email", with: "examplefoo@example"
+          click_button "Save Profile"
+        end
+
+        it { should have_selector('h2', text: "Changing Profile") }
+        it { should have_content('error') }
+        it { should have_content('Login can\'t be blank') }
+        it { should have_content('Name can\'t be blank') }
+        # it { should have_content('Email is invalid') }
+      end # invalid values
       
       describe "after submitting valid values" do
         before do
@@ -346,6 +361,8 @@ describe "UserPages" do
         it { should have_selector('label', text: "New password") }
         it { should have_selector('label', text: "Confirm new password") }
         
+        it { should have_link('Change profile') }
+        
         describe "changing password with incorrect authentication" do
           before do
             fill_in "Current password", with: ""
@@ -381,6 +398,7 @@ describe "UserPages" do
             click_button "Save password"
           end
           
+          it { should have_content("Password successfully changed") }
           it { should have_selector('h2', text: "Changing Profile") }
           it { should have_selector('label', text: 'Login ID') }
           
@@ -420,6 +438,7 @@ describe "UserPages" do
         click_link('Delete Account') 
       end 
       
+      it { should have_content("User profile for #{user.login_id} deleted") }
       it { should have_page_title('OnTrailAgain') }
       it { should have_selector('h2', text: "Welcome") }
       it "should not find the user" do

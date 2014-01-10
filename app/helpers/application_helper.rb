@@ -45,6 +45,14 @@ module ApplicationHelper
       div_name = "title_board inactive"
     end
   end
+  
+  # def project_form_tag_begin
+  #   tag("div", class: "project_form", role: "form")
+  # end
+  # 
+  # def project_form_tag_end
+  #   tag("/div")
+  # end
         
   # def output_with_commas(elements, attribute)
   #   output_string = ""

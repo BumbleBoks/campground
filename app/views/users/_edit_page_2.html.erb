@@ -1,0 +1,22 @@
+<div>
+	<%= f.label :current_password, "Current password" %>
+	<%= f.password_field :current_password  %>						
+</div>
+<div>
+	<%= f.label :password, "New password" %>
+	<%= f.password_field :password  %>						
+</div>
+
+<div>
+	<%= f.label :password_confirmation, "Confirm new password" %>
+	<%= f.password_field :password_confirmation  %>						
+</div>
+	
+<div class = "change_profile_button">
+	<%= link_to "Change profile", edit_user_path(user_login, page: 1), remote: true %>
+</div>	
+
+<div>
+	<%= hidden_field_tag "page", 2 %>
+	<%= f.submit "Save password" %>			
+</div>

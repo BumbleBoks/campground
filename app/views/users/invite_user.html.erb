@@ -1,7 +1,7 @@
 <%= provide(:title, "Join OnTrailAgain") %>
 <h2>Get An Invite</h2>
 
-<div class='project_form'>
+<div class='project_form' role='form'>
 	<%=  form_tag site_user_requests_path do -%>
 		<%= hidden_field_tag "user_request", "get_invite" %>
 		

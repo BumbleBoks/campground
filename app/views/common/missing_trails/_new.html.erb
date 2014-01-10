@@ -1,4 +1,4 @@
-<div class ='project_form'>
+<div class ='project_form' role='form'>
 	<%= form_for Common::MissingTrail.new , remote: true do |f| -%>
 		<div>
 			<%= f.text_area :info, placeholder: "Write about the trail", rows: 8, class: 'wide_textarea' %>

@@ -39,18 +39,18 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # @user = User.find_by(id: params[:id])
+    @user_login = @user.login_id
     @page = params[:page] || 1
   end
 
   def update   
     trim_whitespace_from_params(user_edit_params)
+    @user_login = @user.login_id
     if @user.update_partial_attributes(user_edit_params) 
       if params[:page].present? && params[:page].to_i.eql?(2)
-        # redirect_to edit_user_path(@user)
+        flash[:success] = "Password successfully changed"
         redirect_to edit_user_path(@user.login_id)
       else  
-        # redirect_to @user
         redirect_to user_path(@user.login_id)
       end
     else
@@ -60,7 +60,9 @@ class UsersController < ApplicationController
   end
   
   def destroy
+    user_login = @user.login_id
     @user.destroy
+    flash[:success] = "User profile for #{user_login} deleted"
     redirect_to root_path
   end
 

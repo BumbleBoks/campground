@@ -1,0 +1,11 @@
+<% if @page.to_i.eql?(1) %>
+	$("h2").html("Changing Profile")
+<% end %>
+	
+<% if @page.to_i.eql?(2) %>
+	$("h2").html("Changing Password")
+<% end %>
+
+$('.project_form').html("<%= escape_javascript(render 'edit_form', \
+	{ user: @user, user_login: @user_login, page: @page }) %>")
+

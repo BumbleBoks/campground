@@ -1,0 +1,7 @@
+<%= form_for user, url: user_path(user_login) do |f| -%>
+
+	<%= render 'shared/error_messages', object: f.object %>
+	
+	<%= render "edit_page_#{page}", { f: f, user: user, user_login: user_login } %>
+
+<% end -%>	

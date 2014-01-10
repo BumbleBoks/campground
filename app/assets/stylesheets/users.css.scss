@@ -6,6 +6,23 @@
 $photo_height: 150px;
 $photo_width: 150px;
 
+@mixin change_user_page_styling($background_color, $color) {
+	@include body_button_styling($background_color, $color);
+	margin: 20px;
+	position: relative;
+	left: 100px;
+	a {
+		color: oldlace;
+		position: relative;
+		top: 5px;	
+		transition: $transition-style;
+		
+		&:hover {
+			color: darkgreen;			
+		};	
+	}
+}
+
 #user_profile_photo {
 	border: 1px solid grey;
 	width: $photo_width;
@@ -22,20 +39,11 @@ $photo_width: 150px;
 }
 
 .change_password_button {
-	@include body_button_styling(coral, oldlace);
-	margin: 20px;
-	position: relative;
-	left: 100px;
-	a {
-		color: oldlace;
-		position: relative;
-		top: 5px;	
-		transition: $transition-style;
-		
-		&:hover {
-			color: darkgreen;			
-		};	
-	}
+	@include change_user_page_styling(coral, oldlace);
+}
+
+.change_profile_button {
+	@include change_user_page_styling(rgb(218, 166, 55), oldlace);
 }
 
 .delete_user_button {

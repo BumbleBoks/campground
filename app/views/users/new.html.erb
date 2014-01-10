@@ -1,7 +1,7 @@
 <% provide(:title, "Join OnTrailAgain") %>
 <h2>Join OnTrailAgain</h2>
 
-<div class="project_form">
+<div class="project_form" role="form">
 	<%= form_for @user do |f| -%>
 
 		<%= render 'shared/error_messages', object: f.object%>

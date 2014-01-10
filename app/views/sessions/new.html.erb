@@ -1,7 +1,8 @@
 <% provide(:title, "OnTrailAgain Log In") %>
 <%= link_to "Join", invite_user_path, id: "join_button"  %>
 <h2>OnTrailAgain Login</h2>
-<div class="project_form">
+
+<div class="project_form" role="form">	
 	<%= form_tag '/sessions' do %>
 		<div>
 			<%= label_tag :login_id, "Login ID" %>

@@ -23,7 +23,7 @@
 <p> This trail is <%= @trail.length.to_f %> miles long. <br>
 	<%= text_with_newlines(@trail.description) %></p>
 <% if logged_in? %>
-	<div class='project_form'>
+	<div class='project_form' role='form'>
 		<%= render 'common/trails/update_form' %>		
 	</div>
 <% end %>
